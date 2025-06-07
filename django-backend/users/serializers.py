@@ -21,7 +21,8 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'email', 'phone_number', 'kyc_status', 'wallet_address')
+        # MODIFIED: Added 'is_staff' to the fields tuple
+        fields = ('username', 'email', 'phone_number', 'kyc_status', 'wallet_address', 'is_staff')
         read_only_fields = ('username', 'email') # Username and email typically not updated via profile update
 
 class ChangePasswordSerializer(serializers.Serializer):
@@ -33,3 +34,31 @@ class ChangePasswordSerializer(serializers.Serializer):
         if data['new_password'] != data['confirm_new_password']:
             raise serializers.ValidationError({"new_password": "New passwords must match."})
         return data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
